@@ -1,0 +1,3 @@
+First lesson
+A simple "Hello" app
+An ABS calculator
