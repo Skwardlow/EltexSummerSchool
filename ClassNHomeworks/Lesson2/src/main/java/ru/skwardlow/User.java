@@ -6,6 +6,17 @@ public abstract class User {
     private String mailbox;
     private Byte userid;
 
+    User() {
+
+    }
+
+    User(byte userid, String fio, String phone, String mailbox) {
+        setUserid(userid);
+        setFio(fio);
+        setPhone(phone);
+        setMailbox(mailbox);
+    }
+
     private void setUserid(Byte userid) {
         this.userid = userid;
     }
@@ -38,16 +49,7 @@ public abstract class User {
         return mailbox;
     }
 
-    User() {
 
-    }
-
-    User(byte userid, String fio, String phone, String mailbox) {
-        setUserid(userid);
-        setFio(fio);
-        setPhone(phone);
-        setMailbox(mailbox);
-    }
 
 
 
