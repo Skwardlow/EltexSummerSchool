@@ -10,10 +10,10 @@ public class Developer extends  User{
 
     public Developer(Byte id, String fio, String phone, String mailbox, String[] lang){
         super(id,fio,phone,mailbox);
-        this.lang = lang;
+        setLang(lang);
     }
 
-    public void setLang(String[] lang) {
+    private void setLang(String[] lang) {
         this.lang = lang;
     }
 

@@ -11,11 +11,11 @@ public class Manager extends User {
 
     public Manager(byte id, String fio, String phone, String mailbox, ArrayList sales){
         super(id,fio,phone,mailbox);
-        this.sales = new ArrayList();
+        setSales(sales);
 
     }
 
-    public void setSales(ArrayList sales) {
+    private void setSales(ArrayList sales) {
         this.sales = sales;
     }
 
