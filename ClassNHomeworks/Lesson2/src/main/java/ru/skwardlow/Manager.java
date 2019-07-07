@@ -3,7 +3,7 @@ package ru.skwardlow;
 import java.util.ArrayList;
 
 public class Manager extends User {
-    private ArrayList sales = new ArrayList();
+    private ArrayList<Sales> sales = new ArrayList<>();
 
     Manager(){
         super();
@@ -17,7 +17,7 @@ public class Manager extends User {
     }
 
     private void setSales(String[] items, String[] prices) {
-        sales = new ArrayList();
+        sales = new ArrayList<>();
         if (items.length != prices.length){
             System.out.println( "Sales and prices mismatch");
         }
@@ -25,7 +25,7 @@ public class Manager extends User {
             for (int i=0; i< items.length; i++){
                 String currItem = items[i];
                 String currPrice = prices[i];
-                //sales.add(new Sales(currItem,currPrice));
+                sales.add(new Sales(currItem,currPrice));
 
             }
 

@@ -1,25 +1,40 @@
 package ru.skwardlow;
 
+import java.util.ArrayList;
+
 public class Developer extends  User{
 
-    private  String[] lang;
+    private ArrayList<String> lang = new ArrayList<>();
 
-    public Developer(){
+    Developer(){
         super();
     }
 
-    public Developer(Byte id, String fio, String phone, String mailbox, String[] lang){
+    Developer(Byte id, String fio, String phone, String mailbox, ArrayList<String> lang){
         super(id,fio,phone,mailbox);
         setLang(lang);
     }
 
-    private void setLang(String[] lang) {
+    private void setLang(ArrayList<String> lang) {
         this.lang = lang;
     }
 
-    public String[] getLang() {
+    public ArrayList<String> getLang() {
         return lang;
     }
 
+    private String getLangToStr() {
+        StringBuilder sb = new StringBuilder();
+        for (String s: lang) {
+            sb.append(s).append(';');
+        }
 
+        return sb.toString();
+    }
+
+
+    @Override
+    public String toString() {
+        return getUserid()+getFio()+getPhone()+getMailbox()+getLangToStr();
+    }
 }

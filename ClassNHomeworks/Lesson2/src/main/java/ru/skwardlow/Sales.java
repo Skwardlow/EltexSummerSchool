@@ -1,28 +1,28 @@
 package ru.skwardlow;
 
 public class Sales {
-    private String sales;
-    private String prices;
+    private String sale;
+    private String price;
 
     Sales(){}
     Sales(String sale, String price){
-        setSales(sale);
-        setPrices(price);
+        setSale(sale);
+        setPrice(price);
     }
 
-    private void setSales(String sales) {
-        this.sales = sales;
+    private void setSale(String sale) {
+        this.sale = sale;
     }
 
-    public String getSales() {
-        return sales;
+    public String getSale() {
+        return sale;
     }
 
-    private void setPrices(String prices) {
-        this.prices = prices;
+    private void setPrice(String price) {
+        this.price = price;
     }
 
-    public String getPrices() {
-        return prices;
+    public String getPrice() {
+        return price;
     }
 }
