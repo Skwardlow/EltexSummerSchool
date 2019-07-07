@@ -45,6 +45,12 @@ public class Manager extends User {
         return sb.toString();
     }
 
+    public String toCSV(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("1").append(",").append(this.getFio()).append(this.getPhone()).append(this.getMailbox()).append(this.getSalesToStr());
+    return "haix";
+    }
+
 
     @Override
     public String toString() {
