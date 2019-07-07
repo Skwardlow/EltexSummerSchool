@@ -14,6 +14,7 @@ public class HierarchyMain {
         Manager man = new Manager(id1,"2","3","4",items,cost);
         Developer dev = new Developer(id2,"5","6","7",langs);
         System.out.println(dev.toString());
+        System.out.println(man.toString());
 
     }
 }

@@ -36,4 +36,18 @@ public class Manager extends User {
         return sales;
     }
 
+    private String getSalesToStr() {
+        StringBuilder sb = new StringBuilder();
+        for (Sales s: sales) {
+            sb.append(s.getSale()).append(':').append(s.getPrice()).append(';');
+        }
+
+        return sb.toString();
+    }
+
+
+    @Override
+    public String toString() {
+        return super.toString()+getSalesToStr();
+    }
 }

@@ -50,10 +50,8 @@ public abstract class User {
     }
 
 
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return getUserid()+getFio()+getPhone()+getMailbox();
+    }
 }

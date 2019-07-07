@@ -35,6 +35,6 @@ public class Developer extends  User{
 
     @Override
     public String toString() {
-        return getUserid()+getFio()+getPhone()+getMailbox()+getLangToStr();
+        return super.toString()+getLangToStr();
     }
 }
