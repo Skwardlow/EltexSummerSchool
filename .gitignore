@@ -4,3 +4,4 @@
 *gradle/
 *gradlew*
 *settings.gradle*
+*.csv*
