@@ -1,6 +1,6 @@
 package ru.skwardlow;
 
-public class Sales {
+     class Sales {
     private String sale;
     private String price;
 

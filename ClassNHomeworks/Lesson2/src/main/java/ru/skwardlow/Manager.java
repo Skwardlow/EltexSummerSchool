@@ -1,8 +1,11 @@
 package ru.skwardlow;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Manager extends User {
+public class Manager extends User implements CSV{
     private ArrayList<Sales> sales = new ArrayList<>();
 
     Manager(){
@@ -39,7 +42,7 @@ public class Manager extends User {
     private String getSalesToStr() {
         StringBuilder sb = new StringBuilder();
         for (Sales s: sales) {
-            sb.append(s.getSale()).append(':').append(s.getPrice()).append(';');
+            sb.append(s.getSale()).append(':').append(s.getPrice()).append(',');
         }
 
         return sb.toString();
@@ -47,13 +50,35 @@ public class Manager extends User {
 
     public String toCSV(){
         StringBuilder sb = new StringBuilder();
-        sb.append("1").append(",").append(this.getFio()).append(this.getPhone()).append(this.getMailbox()).append(this.getSalesToStr());
-    return "haix";
+        sb.append("1"+",").append(this.getFio()+",").append(this.getPhone()+",")
+                .append(this.getMailbox()+",").append(this.getSalesToStr()+",").append("\n");
+    return sb.toString();
     }
 
 
     @Override
     public String toString() {
         return super.toString()+getSalesToStr();
+    }
+
+    @Override
+    public void writeToCSV() {
+        FileWriter fw;
+        try {
+            fw = new FileWriter(new File("Managers.csv"),true);
+            StringBuilder sb = new StringBuilder();
+            sb.append("2"+",").append(this.getFio()+",").append(this.getPhone()+",")
+                    .append(this.getMailbox()+",").append(this.getSalesToStr()+",").append("\n");
+            fw.write(sb.toString());
+            // fw.flush();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String readFromCSV() {
+        return null;
     }
 }

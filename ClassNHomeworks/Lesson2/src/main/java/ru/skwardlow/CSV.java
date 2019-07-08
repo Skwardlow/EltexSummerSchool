@@ -2,7 +2,7 @@ package ru.skwardlow;
 
 public interface CSV {
 
- void writeToCSV(String str);
+ void writeToCSV();
  String readFromCSV();
 
 

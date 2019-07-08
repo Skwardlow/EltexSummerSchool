@@ -1,5 +1,6 @@
 package ru.skwardlow;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class HierarchyMain {
@@ -15,6 +16,11 @@ public class HierarchyMain {
         Developer dev = new Developer(id2,"5","6","7",langs);
         System.out.println(dev.toString());
         System.out.println(man.toString());
+
+
+        man.writeToCSV();
+        dev.writeToCSV();
+        System.out.println("done!");
 
     }
 }
