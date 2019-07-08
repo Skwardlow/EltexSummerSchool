@@ -2,6 +2,8 @@ package ru.skwardlow;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Developer extends  User implements CSV{
 
@@ -46,7 +48,7 @@ public class Developer extends  User implements CSV{
             fw = new FileWriter(new File("Developers.csv"),true);
             StringBuilder sb = new StringBuilder();
             sb.append("2"+",").append(this.getFio()+",").append(this.getPhone()+",")
-                    .append(this.getMailbox()+",").append(this.getLangToStr()+",").append("\n");
+                    .append(this.getMailbox()+",").append(":").append(this.getLangToStr()+",").append("\n");
             fw.write(sb.toString());
            // fw.flush();
             fw.close();
@@ -61,20 +63,22 @@ public class Developer extends  User implements CSV{
         BufferedReader br;
         String line;
         String cvsSplitBy = ",";
+        String lngSplitBy = ":";
         try {
             br = new BufferedReader(new FileReader("Developers.csv"));
             line = br.readLine();
-            String[] data = line.split(cvsSplitBy);
-            int count = line.length() - line.replace(";", "").length();
-            setUserid(Byte.valueOf(data[0]));
-            setFio(data[1]);
-            setPhone(data[2]);
-            setMailbox(data[3]);
-            for(int i=0;i<count;i++){
-                lang.add(data[4+i]);
-            }
+            String[] lngSwitch =line.split(lngSplitBy);
+            String[] userData = lngSwitch[0].split(cvsSplitBy);
+            String[] langData = lngSwitch[1].split(cvsSplitBy);
+            setUserid(Byte.valueOf(userData[0]));
+            setFio(userData[1]);
+            setPhone(userData[2]);
+            setMailbox(userData[3]);
 
-        } catch (IOException e) {
+            Collections.addAll(this.lang, langData);
+
+        }
+          catch (IOException e) {
             e.printStackTrace();
         }
     }

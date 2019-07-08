@@ -4,6 +4,7 @@ import com.sun.tools.javac.util.StringUtils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Manager extends User implements CSV{
     private ArrayList<Sales> sales = new ArrayList<>();
@@ -68,7 +69,7 @@ public class Manager extends User implements CSV{
             fw = new FileWriter(new File("Managers.csv"),true);
             StringBuilder sb = new StringBuilder();
             sb.append("2"+",").append(this.getFio()+",").append(this.getPhone()+",")
-                    .append(this.getMailbox()+",").append(this.getSalesToStr()+",").append("\n");
+                    .append(this.getMailbox()+",").append(">").append(this.getSalesToStr()+",").append("\n");
             fw.write(sb.toString());
             // fw.flush();
             fw.close();
@@ -82,28 +83,36 @@ public class Manager extends User implements CSV{
         String csvFile = "Managers.csv";
         BufferedReader br;
         String line;
+        ArrayList<String> currItems = new ArrayList<>();
+        ArrayList<String> currPrices = new ArrayList<>();
         String cvsSplitBy = ",";
+        String salesSplitBy = ">";
+        String prItSplitBy = ":";
         try {
             br = new BufferedReader(new FileReader("Managers.csv"));
             line = br.readLine();
-            String[] data = line.split(cvsSplitBy);
-            int count = line.length() - line.replace(":", "").length();
-            setUserid(Byte.valueOf(data[0]));
-            setFio(data[1]);
-            setPhone(data[2]);
-            setMailbox(data[3]);
-            StringBuilder CurrItems = new StringBuilder();
-            StringBuilder CurrPrices = new StringBuilder();
-            //String[] CurrSale;
-            int iterator=0;
-            for(int i=4;i<count;i++) {
-                String[] CurrSale=data[i].split(":");
-                System.out.println(data[i]);
-                CurrItems.append(CurrSale[0]).append(";");
-                CurrPrices.append((CurrSale[0])).append(";");
+            String[] salesSwitch =line.split(salesSplitBy);
+            String[] userData = salesSwitch[0].split(cvsSplitBy);
+            String[] salesData = salesSwitch[1].split(cvsSplitBy);
+            setUserid(Byte.valueOf(userData[0]));
+            setFio(userData[1]);
+            setPhone(userData[2]);
+            setMailbox(userData[3]);
+
+            ArrayList<String> AL = new ArrayList<>();
+            Collections.addAll(AL, salesData);
+
+            for (String i:AL) {
+            currItems.add(i.split(prItSplitBy)[0]);
+            currPrices.add(i.split(prItSplitBy)[1]);
             }
-            setSales(CurrItems.toString().split(";"),CurrPrices.toString().split(";"));
-        } catch (IOException e) {
+            System.out.println(currItems.toString());
+            System.out.println(currPrices.toString());
+            setSales(currItems.toString().split(","), currPrices.toString().split(","));
+
+
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

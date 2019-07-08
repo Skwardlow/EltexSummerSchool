@@ -13,8 +13,8 @@ public class HierarchyMain {
         Manager man = new Manager(id1,"Igor","+79634115478","abc@d",items,cost);
 
         ArrayList<String> langs = new ArrayList<>();
-        langs.add("poor");
-        langs.add("Lang");
+        langs.add("Java");
+        langs.add("Python");
         Developer dev = new Developer(id2,"Egor","+78005553535","zaym@da",langs);
         try {
             FileWriter fw = new FileWriter(new File("Developers.csv"),false);
@@ -33,6 +33,14 @@ public class HierarchyMain {
         man.writeToCSV();
         dev.writeToCSV();
         System.out.println("CSV Writed");
+
+        Developer rdev = new Developer();
+        rdev.readFromCSV();
+        System.out.println(rdev.toString());
+
+        Manager rman = new Manager();
+        rman.readFromCSV();
+        System.out.println(rman.toString());
 
         //Сделаю лист объектов для считывания подряд вне зависимости от количества как разберусь с чтением
     }

@@ -10,6 +10,8 @@ package ru.skwardlow;
         setPrice(price);
     }
 
+
+
     private void setSale(String sale) {
         this.sale = sale;
     }
