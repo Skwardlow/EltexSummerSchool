@@ -79,19 +79,30 @@ public class Manager extends User implements CSV{
 
     @Override
     public void readFromCSV() {
-        BufferedReader br = null;
+        String csvFile = "Managers.csv";
+        BufferedReader br;
         String line;
         String cvsSplitBy = ",";
         try {
             br = new BufferedReader(new FileReader("Managers.csv"));
             line = br.readLine();
             String[] data = line.split(cvsSplitBy);
-            int count = line.length() - line.replace(".", "").length();
+            int count = line.length() - line.replace(":", "").length();
             setUserid(Byte.valueOf(data[0]));
             setFio(data[1]);
             setPhone(data[2]);
             setMailbox(data[3]);
-            System.out.println(count);
+            StringBuilder CurrItems = new StringBuilder();
+            StringBuilder CurrPrices = new StringBuilder();
+            //String[] CurrSale;
+            int iterator=0;
+            for(int i=4;i<count;i++) {
+                String[] CurrSale=data[i].split(":");
+                System.out.println(data[i]);
+                CurrItems.append(CurrSale[0]).append(";");
+                CurrPrices.append((CurrSale[0])).append(";");
+            }
+            setSales(CurrItems.toString().split(";"),CurrPrices.toString().split(";"));
         } catch (IOException e) {
             e.printStackTrace();
         }

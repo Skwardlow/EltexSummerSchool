@@ -58,18 +58,22 @@ public class Developer extends  User implements CSV{
 
     @Override
     public void readFromCSV() {
-        BufferedReader br = null;
+        BufferedReader br;
         String line;
         String cvsSplitBy = ",";
         try {
             br = new BufferedReader(new FileReader("Developers.csv"));
             line = br.readLine();
             String[] data = line.split(cvsSplitBy);
-            int count = line.length() - line.replace(".", "").length();
+            int count = line.length() - line.replace(";", "").length();
             setUserid(Byte.valueOf(data[0]));
             setFio(data[1]);
             setPhone(data[2]);
             setMailbox(data[3]);
+            for(int i=0;i<count;i++){
+                lang.add(data[4+i]);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
