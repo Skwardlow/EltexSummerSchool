@@ -1,8 +1,6 @@
 package ru.skwardlow;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Developer extends  User implements CSV{
@@ -59,7 +57,21 @@ public class Developer extends  User implements CSV{
     }
 
     @Override
-    public String readFromCSV() {
-        return null;
+    public void readFromCSV() {
+        BufferedReader br = null;
+        String line;
+        String cvsSplitBy = ",";
+        try {
+            br = new BufferedReader(new FileReader("Developers.csv"));
+            line = br.readLine();
+            String[] data = line.split(cvsSplitBy);
+            int count = line.length() - line.replace(".", "").length();
+            setUserid(Byte.valueOf(data[0]));
+            setFio(data[1]);
+            setPhone(data[2]);
+            setMailbox(data[3]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

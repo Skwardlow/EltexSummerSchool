@@ -17,7 +17,7 @@ public abstract class User {
         setMailbox(mailbox);
     }
 
-    private void setUserid(Byte userid) {
+    public void setUserid(Byte userid) {
         this.userid = userid;
     }
 
@@ -25,7 +25,7 @@ public abstract class User {
         return userid;
     }
 
-    private void setFio(String fio) {
+    public void setFio(String fio) {
         this.fio = fio;
     }
 
@@ -33,7 +33,7 @@ public abstract class User {
         return fio;
     }
 
-    private void setPhone(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -41,7 +41,7 @@ public abstract class User {
         return phone;
     }
 
-    private void setMailbox(String mailbox) {
+    public void setMailbox(String mailbox) {
         this.mailbox = mailbox;
     }
 

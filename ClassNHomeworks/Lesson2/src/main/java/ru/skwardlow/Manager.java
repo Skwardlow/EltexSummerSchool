@@ -1,8 +1,8 @@
 package ru.skwardlow;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.sun.tools.javac.util.StringUtils;
+
+import java.io.*;
 import java.util.ArrayList;
 
 public class Manager extends User implements CSV{
@@ -48,12 +48,12 @@ public class Manager extends User implements CSV{
         return sb.toString();
     }
 
-    public String toCSV(){
+  /*  public String toCSV(){
         StringBuilder sb = new StringBuilder();
         sb.append("1"+",").append(this.getFio()+",").append(this.getPhone()+",")
                 .append(this.getMailbox()+",").append(this.getSalesToStr()+",").append("\n");
     return sb.toString();
-    }
+    }*/
 
 
     @Override
@@ -78,7 +78,23 @@ public class Manager extends User implements CSV{
     }
 
     @Override
-    public String readFromCSV() {
-        return null;
+    public void readFromCSV() {
+        BufferedReader br = null;
+        String line;
+        String cvsSplitBy = ",";
+        try {
+            br = new BufferedReader(new FileReader("Managers.csv"));
+            line = br.readLine();
+            String[] data = line.split(cvsSplitBy);
+            int count = line.length() - line.replace(".", "").length();
+            setUserid(Byte.valueOf(data[0]));
+            setFio(data[1]);
+            setPhone(data[2]);
+            setMailbox(data[3]);
+            System.out.println(count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

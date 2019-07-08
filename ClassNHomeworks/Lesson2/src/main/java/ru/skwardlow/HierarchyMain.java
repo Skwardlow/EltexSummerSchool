@@ -16,7 +16,10 @@ public class HierarchyMain {
         Developer dev = new Developer(id2,"5","6","7",langs);
         System.out.println(dev.toString());
         System.out.println(man.toString());
-
+        Manager mman = new Manager();
+        mman.readFromCSV();
+        System.out.println(mman.toString());
+        
 
         man.writeToCSV();
         dev.writeToCSV();
