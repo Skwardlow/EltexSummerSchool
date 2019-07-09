@@ -21,6 +21,12 @@ public class Manager extends User implements CSV{
     }
 
     private void setSales(String[] items, String[] prices) {
+
+        System.out.println(items.length);
+        for (String item : items) {
+            System.out.println("items = [" + item + "]");
+        }
+        System.out.println(prices);
         sales = new ArrayList<>();
         if (items.length != prices.length){
             System.out.println( "Sales and prices mismatch");
