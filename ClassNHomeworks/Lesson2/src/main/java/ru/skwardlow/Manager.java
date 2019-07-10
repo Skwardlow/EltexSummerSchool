@@ -20,11 +20,6 @@ public class Manager extends User implements CSV{
 
     private void setSales(String[] items, String[] prices) {
 
-       /* System.out.println(items.length);
-        for (String item : items) {
-            System.out.println("items = [" + item + "]");
-        }
-        System.out.println(prices);*/
         sales = new ArrayList<>();
         if (items.length != prices.length){
             System.out.println( "Sales and prices mismatch");
@@ -53,12 +48,6 @@ public class Manager extends User implements CSV{
         return sb.toString();
     }
 
-  /*  public String toCSV(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("1"+",").append(this.getFio()+",").append(this.getPhone()+",")
-                .append(this.getMailbox()+",").append(this.getSalesToStr()+",").append("\n");
-    return sb.toString();
-    }*/
 
 
     @Override
@@ -109,8 +98,6 @@ public class Manager extends User implements CSV{
             currItems.add(i.split(prItSplitBy)[0]);
             currPrices.add(i.split(prItSplitBy)[1]);
             }
-            /*System.out.println(currItems.toString());
-            System.out.println(currPrices.toString());*/
             setSales(currItems.toString().split(","), currPrices.toString().split(","));
 
 
