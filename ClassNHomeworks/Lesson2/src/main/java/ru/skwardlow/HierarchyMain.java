@@ -4,7 +4,14 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class HierarchyMain {
+
+
+    private static final String csvPathDev ="Developers.csv";
+    private static final String csvPathMan ="Managers.csv";
+
+
     public static void main(String[] args){
+
         System.out.println("Class Hierarchy");
         byte id1 = 1;
         byte id2 = 2;
@@ -17,14 +24,14 @@ public class HierarchyMain {
         langs.add("Python");
         Developer dev = new Developer(id2,"Egor","+78005553535","zaym@da",langs);
         try {
-            FileWriter fw = new FileWriter(new File("Developers.csv"),false);
+            FileWriter fw = new FileWriter(new File(csvPathDev),false);
             fw.flush();
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
-            FileWriter fw = new FileWriter(new File("Managers.csv"),false);
+            FileWriter fw = new FileWriter(new File(csvPathMan),false);
             fw.flush();
             fw.close();
         } catch (IOException e) {
@@ -41,6 +48,8 @@ public class HierarchyMain {
         Manager rman = new Manager();
         rman.readFromCSV();
         System.out.println(rman.toString());
+
+        System.out.println("CSV Readed");
 
         //Сделаю лист объектов для считывания подряд вне зависимости от количества как разберусь с чтением
     }

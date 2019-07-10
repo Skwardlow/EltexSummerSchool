@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Developer extends  User implements CSV{
-
+    private static final String csvPathDev ="Developers.csv";
     private ArrayList<String> lang = new ArrayList<>();
 
     Developer(){
@@ -45,7 +45,7 @@ public class Developer extends  User implements CSV{
     public void writeToCSV() {
         FileWriter fw;
         try {
-            fw = new FileWriter(new File("Developers.csv"),true);
+            fw = new FileWriter(new File(csvPathDev),true);
             StringBuilder sb = new StringBuilder();
             sb.append("2"+",").append(this.getFio()+",").append(this.getPhone()+",")
                     .append(this.getMailbox()+",").append(":").append(this.getLangToStr()+",").append("\n");
@@ -65,7 +65,7 @@ public class Developer extends  User implements CSV{
         String cvsSplitBy = ",";
         String lngSplitBy = ":";
         try {
-            br = new BufferedReader(new FileReader("Developers.csv"));
+            br = new BufferedReader(new FileReader(csvPathDev));
             line = br.readLine();
             String[] lngSwitch =line.split(lngSplitBy);
             String[] userData = lngSwitch[0].split(cvsSplitBy);

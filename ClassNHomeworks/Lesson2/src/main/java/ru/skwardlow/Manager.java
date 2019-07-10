@@ -1,14 +1,12 @@
 package ru.skwardlow;
 
-import com.sun.tools.javac.util.StringUtils;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Manager extends User implements CSV{
     private ArrayList<Sales> sales = new ArrayList<>();
-
+    private static final String csvPathMan ="Managers.csv";
     Manager(){
         super();
     }
@@ -22,11 +20,11 @@ public class Manager extends User implements CSV{
 
     private void setSales(String[] items, String[] prices) {
 
-        System.out.println(items.length);
+       /* System.out.println(items.length);
         for (String item : items) {
             System.out.println("items = [" + item + "]");
         }
-        System.out.println(prices);
+        System.out.println(prices);*/
         sales = new ArrayList<>();
         if (items.length != prices.length){
             System.out.println( "Sales and prices mismatch");
@@ -72,7 +70,7 @@ public class Manager extends User implements CSV{
     public void writeToCSV() {
         FileWriter fw;
         try {
-            fw = new FileWriter(new File("Managers.csv"),true);
+            fw = new FileWriter(new File(csvPathMan),true);
             StringBuilder sb = new StringBuilder();
             sb.append("2"+",").append(this.getFio()+",").append(this.getPhone()+",")
                     .append(this.getMailbox()+",").append(">").append(this.getSalesToStr()+",").append("\n");
@@ -86,7 +84,6 @@ public class Manager extends User implements CSV{
 
     @Override
     public void readFromCSV() {
-        String csvFile = "Managers.csv";
         BufferedReader br;
         String line;
         ArrayList<String> currItems = new ArrayList<>();
@@ -95,7 +92,7 @@ public class Manager extends User implements CSV{
         String salesSplitBy = ">";
         String prItSplitBy = ":";
         try {
-            br = new BufferedReader(new FileReader("Managers.csv"));
+            br = new BufferedReader(new FileReader(csvPathMan));
             line = br.readLine();
             String[] salesSwitch =line.split(salesSplitBy);
             String[] userData = salesSwitch[0].split(cvsSplitBy);
@@ -112,8 +109,8 @@ public class Manager extends User implements CSV{
             currItems.add(i.split(prItSplitBy)[0]);
             currPrices.add(i.split(prItSplitBy)[1]);
             }
-            System.out.println(currItems.toString());
-            System.out.println(currPrices.toString());
+            /*System.out.println(currItems.toString());
+            System.out.println(currPrices.toString());*/
             setSales(currItems.toString().split(","), currPrices.toString().split(","));
 
 
