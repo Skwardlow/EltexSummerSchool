@@ -4,6 +4,7 @@ import java.io.*;
 
 public class Task<T extends User,V extends  User>implements CSV {
     private static final String taskWorkPath = "Tasks.csv";
+
     private T firstClone;
     private V secondClone;
     private Byte id1=1, id2=2;
@@ -65,23 +66,21 @@ public class Task<T extends User,V extends  User>implements CSV {
 
             Integer currFirstId = Integer.valueOf(data[1]);
             Integer currSevonId = Integer.valueOf(data[2]);
-            if (currFirstId.equals("1")){
+            if (currFirstId.equals(1)){
                 this.firstClone =(T) new Developer();
                 firstClone.setUserid(id1);
-                System.out.println("Task.readFromCSV 1 +"+firstClone.getUserid());
             }
 
-            if (currFirstId.equals("2")){
+            if (currFirstId.equals(2)){
                 this.firstClone =(T) new Manager();
                 firstClone.setUserid(id2);
-                System.out.println("Task.readFromCSV 2 +"+firstClone.getUserid());
             }
 
-            if (currSevonId.equals("1")){
+            if (currSevonId.equals(1)){
                 this.secondClone =(V) new Developer();
                 secondClone.setUserid(id1);
             }
-            if (currSevonId.equals("2")){
+            if (currSevonId.equals(2)){
                 this.secondClone =(V) new Manager();
                 secondClone.setUserid(id2);
             }
