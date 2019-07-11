@@ -47,7 +47,7 @@ public class Developer extends  User implements CSV{
         try {
             fw = new FileWriter(new File(csvPathDev),true);
             StringBuilder sb = new StringBuilder();
-            sb.append("2"+",").append(this.getFio()+",").append(this.getPhone()+",")
+            sb.append("1"+",").append(this.getFio()+",").append(this.getPhone()+",")
                     .append(this.getMailbox()+",").append(":").append(this.getLangToStr()+",").append("\n");
             fw.write(sb.toString());
            // fw.flush();

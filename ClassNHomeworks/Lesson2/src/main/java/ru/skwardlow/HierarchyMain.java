@@ -51,6 +51,14 @@ public class HierarchyMain {
 
         System.out.println("CSV Readed");
 
+        Task <Developer,Manager> task = new Task<>(dev,man);
+        task.writeToCSV();
+        System.out.println("Task Writed");
+        Task<Developer,Manager> rtask = new Task();
+        rtask.readFromCSV();
+        System.out.println("Task Readed");
+        System.out.println(rtask.toString());
+
         //Сделаю лист объектов для считывания подряд вне зависимости от количества как разберусь с чтением
     }
 }
