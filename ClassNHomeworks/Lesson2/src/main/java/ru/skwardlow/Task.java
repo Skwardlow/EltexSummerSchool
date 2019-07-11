@@ -84,7 +84,7 @@ public class Task<T extends User,V extends  User>implements CSV {
                 this.secondClone =(V) new Manager();
                 secondClone.setUserid(id2);
             }
-
+//Class.cast
 
         } catch (IOException e) {
             e.printStackTrace();
