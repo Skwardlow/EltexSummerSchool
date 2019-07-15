@@ -10,7 +10,6 @@ sourceCompatibility = 1.8
 
 mainClassName="ru.skwardlow.HierarchyMain"
 
-
 repositories {
     mavenCentral()
 }
