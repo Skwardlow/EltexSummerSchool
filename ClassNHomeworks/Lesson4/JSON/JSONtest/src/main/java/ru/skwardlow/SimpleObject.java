@@ -40,4 +40,9 @@ public class SimpleObject {
     public void setIsThatTrue(Double isThatTrue) {
         this.isThatTrue = isThatTrue;
     }
+
+    @Override
+    public String toString() {
+        return objectName.toString()+" "+objectCounter.toString()+" "+isThatTrue.toString();
+    }
 }
