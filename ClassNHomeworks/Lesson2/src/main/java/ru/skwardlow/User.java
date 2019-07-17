@@ -1,6 +1,12 @@
 package ru.skwardlow;
 
-public abstract class User {
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public abstract class User implements CSV,JSON {
     private String fio;
     private String phone;
     private String mailbox;
@@ -53,5 +59,32 @@ public abstract class User {
     @Override
     public String toString() {
         return getUserid()+getFio()+getPhone()+getMailbox();
+    }
+
+    @Override
+    public void writeToJSON() {
+        ObjectMapper om = new ObjectMapper();
+        try{
+            FileWriter fw = new FileWriter(new File("Users.json"),true);
+            om.writeValue(fw,this);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void readFromJSON() {
+        ObjectMapper om = new ObjectMapper();
+        try {
+            User tmpUser = om.readValue(new File("Users.json"),User.class);
+            this.fio = tmpUser.fio;
+            this.phone = tmpUser.phone;
+            this.mailbox = tmpUser.mailbox;
+            this.userid = tmpUser.userid;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

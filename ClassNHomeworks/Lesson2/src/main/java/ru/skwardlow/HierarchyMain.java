@@ -39,6 +39,8 @@ public class HierarchyMain {
         }
         man.writeToCSV();
         dev.writeToCSV();
+        man.writeToJSON();
+
         System.out.println("CSV Writed");
 
         Developer rdev = new Developer();
@@ -58,6 +60,21 @@ public class HierarchyMain {
         rtask.readFromCSV();
         System.out.println("Task Readed");
         System.out.println(rtask.toString());
+
+        man.writeToJSON();
+        dev.writeToJSON();
+        System.out.println("Json writed");
+
+        Manager jman = new Manager();
+        jman.readFromJSON();
+        System.out.println(jman.toString());
+
+        Developer jdev = new Developer();
+        jdev.readFromJSON();
+        System.out.println(jdev.toString());
+
+        System.out.println("Json readed");
+
 
         //Сделаю лист объектов для считывания подряд вне зависимости от количества как разберусь с чтением
     }

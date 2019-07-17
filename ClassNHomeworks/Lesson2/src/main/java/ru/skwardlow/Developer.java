@@ -1,12 +1,15 @@
 package ru.skwardlow;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Developer extends  User implements CSV{
+public class Developer extends  User{
     private static final String csvPathDev ="Developers.csv";
+    private static final String jsonPathDev ="Developers.json";
     private ArrayList<String> lang = new ArrayList<>();
 
     Developer(){
@@ -81,5 +84,30 @@ public class Developer extends  User implements CSV{
           catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void writeToJSON() {
+    /*    try {
+            FileWriter fw = new FileWriter(new File(jsonPathDev),true);
+            ObjectMapper om = new ObjectMapper();
+            om.writeValue(fw,this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        super.writeToJSON();
+    }
+
+    @Override
+    public void readFromJSON() {
+        /*ObjectMapper om = new ObjectMapper();
+        try {
+            Developer tmpDev = om.readValue(new File(jsonPathDev),Developer.class);
+            super.readFromJSON();
+            this.lang = tmpDev.lang;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        super.readFromJSON();
     }
 }
