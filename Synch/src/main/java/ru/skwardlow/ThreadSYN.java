@@ -1,8 +1,8 @@
 package ru.skwardlow;
 
-public class Counter implements Runnable{
-    Common res;
-    Counter(Common res){
+public class ThreadSYN implements Runnable{
+    private ResSYN res;
+    ThreadSYN(ResSYN res){
         this.res = res;
     }
 
