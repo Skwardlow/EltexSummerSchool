@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'ThreadsTest'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+mainClassName = "ru.skwardlow.poolmain"
+
+run{
+    standardInput=System.in
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
