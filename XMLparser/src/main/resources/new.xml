@@ -1,0 +1,10 @@
+<catalogue>
+    <shipID name="Flagman">
+        <weight>780</weight>
+        <shipclass>Flag</shipclass>
+    </shipID>
+    <shipID name="UserShip">
+        <weight>130</weight>
+        <shipclass>Poor</shipclass>
+    </shipID>
+</catalogue>
