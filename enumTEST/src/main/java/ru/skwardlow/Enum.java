@@ -2,7 +2,7 @@ package ru.skwardlow;
 
 import java.util.Scanner;
 
-public class enumMain {
+public class Enum {
     public static void main(String[] args) {
         WorkDay workDay = WorkDay.FRIDAY;
         String str = " ";

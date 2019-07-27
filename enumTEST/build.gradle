@@ -7,7 +7,7 @@ group 'DaysOfWeek'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-mainClassName ="ru.skwardlow.enumMain"
+mainClassName ="ru.skwardlow.Enum"
 
 
 repositories {

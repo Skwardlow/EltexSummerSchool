@@ -2,7 +2,7 @@ package ru.skwardlow;
 
 import java.math.BigInteger;
 
-public class main {
+public class BigInt {
     public static void main(String[] args) {
         BigInteger soBIG;
         soBIG= BigInteger.valueOf(2);
