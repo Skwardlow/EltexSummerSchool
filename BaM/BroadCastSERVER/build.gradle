@@ -7,11 +7,7 @@ group 'BaM'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-mainClassName = 'ru.skwardlow.Broadcast'
-
-run{
-    standardInput = System.in
-}
+mainClassName = 'ru.skwardlow.BroadcastS'
 
 repositories {
     mavenCentral()
