@@ -10,7 +10,7 @@ import java.io.*;
  * Hello world!
  *
  */
-public class App implements Json
+public class App
 {
     public static void main ( String[] args )
     {
@@ -40,14 +40,4 @@ public class App implements Json
         System.out.println(simpleObjectr.toString());
     }
 
-    @Override
-    public String toJSON() {
-
-        return null;
-    }
-
-    @Override
-    public void fromJSON(String str) {
-
-    }
 }
