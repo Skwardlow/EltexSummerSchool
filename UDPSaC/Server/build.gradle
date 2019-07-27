@@ -7,7 +7,11 @@ group 'UDPSaC'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-mainClassName = "ru.skwardlow.Server"
+mainClassName = "ru.skwardlow.ServerCommander"
+
+run{
+    standardInput=System.in
+}
 
 repositories {
     mavenCentral()
