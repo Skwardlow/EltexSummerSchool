@@ -4,20 +4,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
-public class Developer extends  User{
-    private static final String csvPathDev ="Developers.csv";
-    private static final String jsonPathDev ="Developers.json";
+public class Developer extends User {
+    private static final String csvPathDev = "src/main/resources/Developers.csv";
+    private static final String jsonPathDev = "src/main/resources/Developers.json";
     private ArrayList<String> lang = new ArrayList<>();
 
-    Developer(){
+    Developer() {
         super();
     }
 
-    Developer(Byte id, String fio, String phone, String mailbox, ArrayList<String> lang){
-        super(id,fio,phone,mailbox);
+    Developer(Byte id, String fio, String phone, String mailbox, ArrayList<String> lang) {
+        super(id, fio, phone, mailbox);
         setLang(lang);
     }
 
@@ -31,8 +30,8 @@ public class Developer extends  User{
 
     private String getLangToStr() {
         StringBuilder sb = new StringBuilder();
-        for (String s: lang) {
-            sb.append(s).append(',');
+        for (String s : lang) {
+            sb.append(s).append(" ");
         }
 
         return sb.toString();
@@ -41,19 +40,17 @@ public class Developer extends  User{
 
     @Override
     public String toString() {
-        return super.toString()+getLangToStr();
+        return super.toString() + getLangToStr();
     }
 
     @Override
     public void writeToCSV() {
         FileWriter fw;
         try {
-            fw = new FileWriter(new File(csvPathDev),true);
-            StringBuilder sb = new StringBuilder();
-            sb.append("1"+",").append(this.getFio()+",").append(this.getPhone()+",")
-                    .append(this.getMailbox()+",").append(":").append(this.getLangToStr()+",").append("\n");
-            fw.write(sb.toString());
-           // fw.flush();
+            fw = new FileWriter(new File(csvPathDev), true);
+            String sb = "1" + "," + this.getFio() + "," + this.getPhone() + "," +
+                    this.getMailbox() + "," + ":" + this.getLangToStr() + "," + "\n";
+            fw.write(sb);
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,7 +67,7 @@ public class Developer extends  User{
         try {
             br = new BufferedReader(new FileReader(csvPathDev));
             line = br.readLine();
-            String[] lngSwitch =line.split(lngSplitBy);
+            String[] lngSwitch = line.split(lngSplitBy);
             String[] userData = lngSwitch[0].split(cvsSplitBy);
             String[] langData = lngSwitch[1].split(cvsSplitBy);
             setUserid(Byte.valueOf(userData[0]));
@@ -80,34 +77,26 @@ public class Developer extends  User{
 
             Collections.addAll(this.lang, langData);
 
-        }
-          catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void writeToJSON() {
-    /*    try {
-            FileWriter fw = new FileWriter(new File(jsonPathDev),true);
-            ObjectMapper om = new ObjectMapper();
-            om.writeValue(fw,this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        super.writeToJSON();
+    public void writeToJSON() throws IOException {
+        FileWriter fw = new FileWriter(new File(jsonPathDev), true);
+        ObjectMapper om = new ObjectMapper();
+        om.writeValue(fw, this);
     }
 
     @Override
-    public void readFromJSON() {
-        /*ObjectMapper om = new ObjectMapper();
-        try {
-            Developer tmpDev = om.readValue(new File(jsonPathDev),Developer.class);
-            super.readFromJSON();
-            this.lang = tmpDev.lang;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        super.readFromJSON();
+    public void readFromJSON() throws IOException {
+        ObjectMapper om = new ObjectMapper();
+        Developer tmpDev = om.readValue(new File(jsonPathDev), Developer.class);
+        this.userid = tmpDev.userid;
+        this.fio = tmpDev.fio;
+        this.phone = tmpDev.phone;
+        this.mailbox = tmpDev.mailbox;
+        this.lang = tmpDev.lang;
     }
 }

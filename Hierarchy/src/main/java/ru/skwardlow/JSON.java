@@ -1,6 +1,8 @@
 package ru.skwardlow;
 
+import java.io.IOException;
+
 public interface JSON {
-    void writeToJSON();
-    void readFromJSON();
+    void writeToJSON() throws IOException;
+    void readFromJSON() throws IOException;
 }
