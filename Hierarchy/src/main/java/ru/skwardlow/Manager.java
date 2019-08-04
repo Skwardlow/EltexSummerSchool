@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Manager extends User {
+    private static final String csvPathMan = "src/main/resources/results/Managers.csv";
+    public static final String jsonPathMan = "src/main/resources/results/Managers.json";
     @Getter
     private ArrayList<Sales> sales = new ArrayList<>();
-    private static final String csvPathMan = "src/main/resources/Managers.csv";
-    private static final String jsonPathMan = "src/main/resources/Managers.json";
 
     Manager() {
         super();
@@ -24,7 +24,7 @@ public class Manager extends User {
 
     }
 
-    private void setSales(String[] items, String[] prices) {
+    public void setSales(String[] items, String[] prices) {
 
         sales = new ArrayList<>();
         if (items.length != prices.length) {
@@ -40,7 +40,7 @@ public class Manager extends User {
         }
     }
 
-    private String getSalesToStr() {
+    public String salesToStr() {
         StringBuilder sb = new StringBuilder();
         for (Sales s : sales) {
             sb.append(s.getSale()).append(':').append(s.getPrice()).append(' ');
@@ -52,7 +52,7 @@ public class Manager extends User {
 
     @Override
     public String toString() {
-        return super.toString() + getSalesToStr();
+        return super.toString() + salesToStr();
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Manager extends User {
         try {
             fw = new FileWriter(new File(csvPathMan), true);
             String sb = "2" + "," + this.getFio() + "," + this.getPhone() + "," +
-                    this.getMailbox() + "," + ">" + this.getSalesToStr() + "," + "\n";
+                    this.getMailbox() + "," + ">" + this.salesToStr() + "," + "\n";
             fw.write(sb);
             // fw.flush();
             fw.close();
@@ -108,19 +108,19 @@ public class Manager extends User {
 
     @Override
     public void writeToJSON() throws IOException {
-            FileWriter fw = new FileWriter(new File(jsonPathMan), true);
-            ObjectMapper om = new ObjectMapper();
-            om.writeValue(fw, this);
+        FileWriter fw = new FileWriter(new File(jsonPathMan), true);
+        ObjectMapper om = new ObjectMapper();
+        om.writeValue(fw, this);
     }
 
     @Override
-    public void readFromJSON() throws  IOException {
+    public void readFromJSON() throws IOException {
         ObjectMapper om = new ObjectMapper();
-            Manager tmpMan = om.readValue(new File(jsonPathMan), Manager.class);
-            this.userid = tmpMan.userid;
-            this.fio = tmpMan.fio;
-            this.phone = tmpMan.phone;
-            this.mailbox = tmpMan.mailbox;
-            this.sales = tmpMan.sales;
+        Manager tmpMan = om.readValue(new File(jsonPathMan), Manager.class);
+        this.userid = tmpMan.userid;
+        this.fio = tmpMan.fio;
+        this.phone = tmpMan.phone;
+        this.mailbox = tmpMan.mailbox;
+        this.sales = tmpMan.sales;
     }
 }

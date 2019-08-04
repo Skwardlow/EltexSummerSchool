@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Developer extends User {
-    private static final String csvPathDev = "src/main/resources/Developers.csv";
-    private static final String jsonPathDev = "src/main/resources/Developers.json";
+    private static final String csvPathDev = "src/main/resources/results/Developers.csv";
+    public static final String jsonPathDev = "src/main/resources/results/Developers.json";
     private ArrayList<String> lang = new ArrayList<>();
 
     Developer() {
@@ -20,7 +20,7 @@ public class Developer extends User {
         setLang(lang);
     }
 
-    private void setLang(ArrayList<String> lang) {
+    public void setLang(ArrayList<String> lang) {
         this.lang = lang;
     }
 
@@ -28,7 +28,7 @@ public class Developer extends User {
         return lang;
     }
 
-    private String getLangToStr() {
+    public String langToStr() {
         StringBuilder sb = new StringBuilder();
         for (String s : lang) {
             sb.append(s).append(" ");
@@ -40,7 +40,7 @@ public class Developer extends User {
 
     @Override
     public String toString() {
-        return super.toString() + getLangToStr();
+        return super.toString() + langToStr();
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Developer extends User {
         try {
             fw = new FileWriter(new File(csvPathDev), true);
             String sb = "1" + "," + this.getFio() + "," + this.getPhone() + "," +
-                    this.getMailbox() + "," + ":" + this.getLangToStr() + "," + "\n";
+                    this.getMailbox() + "," + ":" + this.langToStr() + "," + "\n";
             fw.write(sb);
             fw.close();
         } catch (IOException e) {
