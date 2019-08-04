@@ -1,0 +1,17 @@
+.block1 {
+    border: 10px
+            solid
+            #CCAABB;
+    width: 350px;
+    height: 350px;
+}
+#block2 {
+    font-family: "Roboto Light", serif;
+    margin-top: 50px;
+    padding: 16px;
+}
+
+#subButton{
+    margin-top: 150px;
+
+}

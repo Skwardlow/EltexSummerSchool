@@ -1,5 +1,7 @@
 package ru.skwardlow;
 
+import lombok.SneakyThrows;
+
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -12,18 +14,14 @@ public class ServerThread implements Runnable {
     ServerThread(Integer port) {
         this.port = port;
     }
-
+    @SneakyThrows
     public void run() {
-        try {
             ServerSocket ss = new ServerSocket(port, 0, InetAddress.getByName("0.0.0.0"));
             while (!close) {
                 Socket socket = ss.accept();
                 Runnable run = new ClientThread(socket);
                 Thread thread = new Thread(run);
                 thread.start();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

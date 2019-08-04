@@ -1,41 +1,27 @@
-<!doctype html>
-<title>Example</title>
-<style>
-  * {
-   box-sizing: border-box; 
-  }
-  body {
-    margin: 0;
-  }
-  #main {
-    display: flex;
-    min-height: calc(100vh - 40vh);
-  }
-  #main > article {
-    flex: 1;
-  }
-  #main > nav, 
-  #main > aside {
-    flex: 0 0 20vw;
-    background: beige;
-  }
-  #main > nav {
-    order: -1;
-  }
-  header, footer, article, nav, aside {
-    padding: 1em;
-  }
-  header, footer {
-    background: yellowgreen;
-    height: 20vh;
-  }
-</style>
+<!DOCTYPE html>
+<head>
+  <title>SimpleDB</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" >
+<head>
+
 <body>
-  <header>Header</header>
-  <div id="main">
-    <article>Article</article>
-    <nav>Nav</nav>
-    <aside>Aside</aside>
+  <div class="block1">
+    <center></center>
+    <button id="subButton">Submit</button>
+    <br>
+    <font>Enter</font>
+    </center>
   </div>
+
+  <span id="block2">
+    <form action="action.html" method="get">
+      <label>ID</label>
+      <input type="text"/>
+      <br>
+      <input type="password"/>
+      <input type="submit" value="send">
+    </form>
+  </span>
+
   <footer>Footer</footer>
 </body>
