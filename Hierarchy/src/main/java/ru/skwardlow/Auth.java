@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Properties;
 
 public class Auth {
@@ -17,15 +18,14 @@ public class Auth {
     static  {
         Properties prop = new Properties();
         try {
-            prop.get(new FileInputStream("src/main/resources/cfg/config.properties"));
+            prop.load(new FileInputStream("src/main/resources/cfg/config.properties"));
             System.out.println(prop.toString());
-//            HOST = prop.getProperty("db.host");
-//            LOGIN = prop.getProperty("db.login");
-//            PASSWD = prop.getProperty("db.password");
-            HOST = "jdbc:mysql://127.0.0.1:3306/users?useSSL=false";
-            LOGIN = "root";
-            PASSWD = "qwe123";
+            HOST = prop.getProperty("db.host");
+            LOGIN = prop.getProperty("db.login");
+            PASSWD = prop.getProperty("db.password");
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
