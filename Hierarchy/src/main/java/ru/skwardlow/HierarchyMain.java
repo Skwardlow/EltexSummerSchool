@@ -77,6 +77,7 @@ public class HierarchyMain {
         System.out.println("      " + jdev.toString());
 
         System.out.println(splitter);
+        SQLfunc.checkTableNotExist();
         System.out.println(" Database from JSON writer:");
         Database.jsonDevDBTransfer();
         Database.jsonManDBTransfer();
