@@ -3,7 +3,6 @@ package ru.skwardlow;
 import lombok.Getter;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -23,8 +22,6 @@ public class Auth {
             HOST = prop.getProperty("db.host");
             LOGIN = prop.getProperty("db.login");
             PASSWD = prop.getProperty("db.password");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

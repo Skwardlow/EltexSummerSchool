@@ -17,20 +17,33 @@ public class Database {
     protected static void devToDB(Developer developer) {
         @Cleanup Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         @Cleanup Statement statement = connection.createStatement();
-        statement.executeUpdate("INSERT INTO Developers(fio, phone, mailbox, langs) " +
-                "VALUE ('" + developer.getFio() + "','" + developer.getPhone() +
-                "','" + developer.getMailbox() + "','" + developer.langToStr() + "')");
-        statement.close();
+
+        if (!SQLfunc.containCheck("Developers","fio",developer.fio)){
+            statement.executeUpdate("INSERT INTO Developers(fio, phone, mailbox) " +
+                    "VALUE ('" + developer.getFio() + "','" + developer.getPhone() +
+                    "','" + developer.getMailbox() + "')");
+            stringLangsParse(developer.getLang(),SQLfunc.returnID("Developers","fio",developer.getFio(),"id"));
+        }
+        else {
+          //  stringLangsParse(developer.getLang(),SQLfunc.returnID("Developers","fio",developer.getFio(),"id"));
+        }
+
+
     }
 
     @SneakyThrows(SQLException.class)
     protected static void manToDB(Manager manager) {
         @Cleanup Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         @Cleanup Statement statement = connection.createStatement();
-        statement.executeUpdate("INSERT INTO Managers(fio, phone, mailbox, sales) " +
-                "VALUE ('" + manager.getFio() + "','" + manager.getPhone() +
-                "','" + manager.getMailbox() + "','" + manager.salesToStr() + "')");
+        if (!SQLfunc.containCheck("Managers","fio",manager.fio)){
+            statement.executeUpdate("INSERT INTO Managers(fio, phone, mailbox) " +
+                    "VALUE ('" + manager.getFio() + "','" + manager.getPhone() +
+                    "','" + manager.getMailbox() + "')");
+            stringSalesParse(manager.salesToStr().split(" "),SQLfunc.returnID("Managers","fio",manager.getFio(),"id"));
+        };
     }
+
+
 
     @SneakyThrows(SQLException.class)
     public static ArrayList<Developer> devsFromDB() {
@@ -125,5 +138,33 @@ public class Database {
             devToDB(currDev);
         }
 
+    }
+
+    @SneakyThrows(SQLException.class)
+    private static void stringLangsParse(ArrayList<String> langs,Integer userID) {
+        @Cleanup Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
+        @Cleanup Statement statement = connection.createStatement();
+        for (String s : langs) {
+            if (!(SQLfunc.containCheck("Langs", "lang", s))) {
+                statement.executeUpdate("INSERT into Langs(lang) VALUES ('" + s + "')");
+            }
+            statement.executeUpdate("insert IGNORE into LangUnity(id_Dev, id_Lang) VALUES " +
+                    "("+userID+","+SQLfunc.returnID("Langs","lang",s,"id")+")");
+
+        }
+    }
+
+    @SneakyThrows(SQLException.class)
+    private static void stringSalesParse(String[] sales,Integer userID) {
+        @Cleanup Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
+        @Cleanup Statement statement = connection.createStatement();
+        for (String s : sales) {
+            if (!(SQLfunc.containCheck("Sales", "sale", s))) {
+                statement.executeUpdate("INSERT into Sales(sale) VALUES ('" + s + "')");
+            }
+            statement.executeUpdate("insert IGNORE into SalesUnity(id_Man, id_Sale) VALUES " +
+                    "("+userID+","+SQLfunc.returnID("Sales","sale",s,"id")+")");
+
+        }
     }
 }
