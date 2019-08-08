@@ -35,7 +35,7 @@ public class SQLfunc {
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS SalesUnity (id_Man INT NOT NULL , id_Sale INT," +
                 " primary key (id_Man,id_Sale));\n");
         statement.executeUpdate(("CREATE TABLE IF NOT EXISTS Sales (id INT NOT NULL AUTO_INCREMENT, sale varchar(30)," +
-                "primary key (id));\n"));
+                "cost varchar(15),primary key (id));\n"));
     }
 
     @SneakyThrows(SQLException.class)

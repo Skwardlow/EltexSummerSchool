@@ -39,8 +39,9 @@ public class Database {
             statement.executeUpdate("INSERT INTO Managers(fio, phone, mailbox) " +
                     "VALUE ('" + manager.getFio() + "','" + manager.getPhone() +
                     "','" + manager.getMailbox() + "')");
-            stringSalesParse(manager.salesToStr().split(" "),SQLfunc.returnID("Managers","fio",manager.getFio(),"id"));
-        };
+            stringSalesParse(manager.getSales(),SQLfunc.returnID("Managers","fio",manager.getFio(),"id"));
+        }
+        connection.close();
     }
 
 
@@ -155,15 +156,15 @@ public class Database {
     }
 
     @SneakyThrows(SQLException.class)
-    private static void stringSalesParse(String[] sales,Integer userID) {
+    private static void stringSalesParse(ArrayList<Sales> sales,Integer userID) {
         @Cleanup Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         @Cleanup Statement statement = connection.createStatement();
-        for (String s : sales) {
-            if (!(SQLfunc.containCheck("Sales", "sale", s))) {
-                statement.executeUpdate("INSERT into Sales(sale) VALUES ('" + s + "')");
+        for (Sales s : sales) {
+            if (!(SQLfunc.containCheck("Sales", "sale", s.getSale()))) {
+                statement.executeUpdate("INSERT into Sales(sale,cost) VALUES ('" + s.getSale() + "','"+s.getPrice()+"')");
             }
             statement.executeUpdate("insert IGNORE into SalesUnity(id_Man, id_Sale) VALUES " +
-                    "("+userID+","+SQLfunc.returnID("Sales","sale",s,"id")+")");
+                    "("+userID+","+SQLfunc.returnID("Sales","sale",s.getSale(),"id")+")");
 
         }
     }

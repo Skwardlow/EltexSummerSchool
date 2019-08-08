@@ -17,11 +17,11 @@ public class HierarchyMain {
         System.out.println("\n\nClass Hierarchy\n");
         byte id1 = 1;
         byte id2 = 2;
-        String[] items = {" iPad", " iPhone", " iHome"};
+        String[] items = {"iPad", "iPhone", "iHome"};
         String[] cost = {"111111", "2222222", "3333333"};
         Manager man = new Manager(id1, "Igor", "+79634115478", "abc@d", items, cost);
 
-        String[] items1 = {" iPad", " iPhone", " Ahahaha"};
+        String[] items1 = {"iPad", "iPhone", "Ahahaha"};
         String[] cost1 = {"111111", "2222222", "Whohahahahaah"};
         Manager man1 = new Manager(id1, "Bugor", "+79634111488", "abc@d", items1, cost1);
 
