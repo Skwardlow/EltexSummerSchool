@@ -91,11 +91,11 @@ public class HierarchyMain {
         Database.jsonDevDBTransfer();
         Database.jsonManDBTransfer();
 
-//        System.out.println(" "+ SQLfunc.containCheck("Developers","fio","Egor"));
-//        System.out.println(" "+SQLfunc.returnID("Developers","fio","Egor"));
         SQLfunc.showALL();
+        System.out.println(splitter);
+
+        SQLfunc.showAllUnion();
 
         System.out.println(splitter);
-        //Сделаю лист объектов для считывания подряд вне зависимости от количества как разберусь с чтением
     }
 }

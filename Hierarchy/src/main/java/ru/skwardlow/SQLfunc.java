@@ -18,6 +18,14 @@ public class SQLfunc {
     }
 
     @SneakyThrows(SQLException.class)
+    protected static void showAllUnion(){
+        @Cleanup Connection connection = DriverManager.getConnection(Auth.getHOST(),Auth.getLOGIN(),Auth.getPASSWD());
+        @Cleanup Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM Developers UNION SELECT * FROM Managers");
+        DBTablePrinter.printResultSet(resultSet);
+    }
+
+    @SneakyThrows(SQLException.class)
     protected  static void checkTableNotExist (){
         @Cleanup Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         @Cleanup Statement statement = connection.createStatement();
