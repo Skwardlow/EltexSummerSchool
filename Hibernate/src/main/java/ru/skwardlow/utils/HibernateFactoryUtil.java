@@ -15,7 +15,7 @@ public class HibernateFactoryUtil {
 
     public static SessionFactory getSessionFactory(){
         if (sessionFactory == null){
-            Configuration configuration = new Configuration().configure();
+            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
             configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Passport.class);
             configuration.addAnnotatedClass(Address.class);

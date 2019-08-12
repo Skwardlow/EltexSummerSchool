@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
+@lombok.Getter
+@lombok.Setter
 @Entity
 @Table(name = "passport")
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class Passport {
     private Integer id;
 
     @OneToOne(mappedBy = "passport",fetch = FetchType.EAGER)
-    @JoinColumn(name = "u_passport")
+   // @JoinColumn(name = "u_passport")
     User user;
 
     private Long number;

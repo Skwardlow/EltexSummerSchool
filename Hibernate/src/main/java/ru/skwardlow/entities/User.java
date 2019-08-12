@@ -2,7 +2,6 @@ package ru.skwardlow.entities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Entity;
 import ru.skwardlow.interfaces.JSON;
@@ -12,9 +11,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 
-@Data
+@lombok.Getter
+@lombok.Setter
 @Entity
 @Table(name = "users")
 @AllArgsConstructor

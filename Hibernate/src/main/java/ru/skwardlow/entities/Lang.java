@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
+@lombok.Getter
+@lombok.Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +18,7 @@ public class Lang {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "u_lang")
+  //  @JoinColumn(name = "u_lang")
     private User owner;
 
     private String name;

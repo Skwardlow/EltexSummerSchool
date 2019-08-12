@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Collection;
 
-@Data
+@lombok.Getter
+@lombok.Setter
 @Entity
 @Table(name = "address")
 @NoArgsConstructor
@@ -20,7 +21,7 @@ public class Address {
     private Integer id;
 
     @ManyToMany(mappedBy = "address", fetch = FetchType.EAGER)
-    @JoinColumn(name = "u_address")
+   // @JoinTable(name = "u_address")
     private Collection<User> owner;
 
     private String city;
