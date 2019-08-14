@@ -19,7 +19,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @ManyToMany(mappedBy = "address", fetch = FetchType.EAGER)
+    @ManyToMany( fetch = FetchType.EAGER)
     @JoinTable(name = "u_address")
     private Collection<User> owner;
 
