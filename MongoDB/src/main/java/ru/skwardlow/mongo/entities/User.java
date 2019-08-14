@@ -22,6 +22,7 @@ public class User implements Serializable {
     private String email;
 
     public User(String fio, String phone, String email){
+        this.fio = fio;
 
     }
 
