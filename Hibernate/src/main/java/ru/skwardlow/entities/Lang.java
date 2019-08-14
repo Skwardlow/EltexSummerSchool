@@ -18,7 +18,7 @@ public class Lang {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-  //  @JoinColumn(name = "u_lang")
+    @JoinColumn(name = "u_lang")
     private User owner;
 
     private String name;

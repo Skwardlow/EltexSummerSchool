@@ -3,7 +3,6 @@ package ru.skwardlow.entities;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Entity;
 import ru.skwardlow.interfaces.JSON;
 
 import javax.persistence.*;
