@@ -16,9 +16,9 @@ public class Lang {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    /*@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "u_lang")
-    private User owner;
+    private User owner;*/
 
     private String name;
 
@@ -27,7 +27,8 @@ public class Lang {
         this.name = name;
     }
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "u_lang")
     private User users;
 
     }

@@ -19,7 +19,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @ManyToMany( fetch = FetchType.EAGER)
+    @ManyToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "u_address")
     private Collection<User> owner;
 

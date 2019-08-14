@@ -38,9 +38,10 @@ public class Main {
         Lang lang = new Lang("Java");
         cLang.add(lang);
         user1.setLang(cLang);
-        lang.setOwner(user1);
+        lang.setUsers(user1);
 
         userService.saveUser(user1);
+
 
 
     }

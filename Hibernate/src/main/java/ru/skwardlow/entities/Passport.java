@@ -16,7 +16,7 @@ public class Passport {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @OneToOne(mappedBy = "passport",fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "passport",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     User user;
 
