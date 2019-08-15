@@ -12,7 +12,7 @@ public class Auth {
     static  {
         Properties prop = new Properties();
         try {
-            prop.load(new FileInputStream("src/main/resources/cfg/config.properties"));
+            prop.load(new FileInputStream("src/main/resources/config.properties"));
             System.out.println(prop.toString());
             HOST = prop.getProperty("db.host");
             LOGIN = prop.getProperty("db.login");
