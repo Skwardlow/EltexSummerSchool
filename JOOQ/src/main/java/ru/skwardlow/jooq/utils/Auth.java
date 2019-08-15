@@ -9,7 +9,7 @@ public class Auth {
     private static String LOGIN;
     private static String PASSWD;
 
-    static  {
+    static {
         Properties prop = new Properties();
         try {
             prop.load(new FileInputStream("src/main/resources/config.properties"));

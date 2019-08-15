@@ -3,12 +3,12 @@ package ru.skwardlow.jooq.utils;
 import java.sql.*;
 
 public class SQLfunc {
-    public static void showALL () throws SQLException {
+    public static void showALL() throws SQLException {
         Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
 
     }
 
-    public  static void checkTableNotExist () throws SQLException{
+    public static void checkTableNotExist() throws SQLException {
         Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         Statement statement = connection.createStatement();
 
@@ -28,7 +28,7 @@ public class SQLfunc {
                 "cost varchar(15),primary key (id));\n"));
     }
 
-    public static void deleteTabs() throws SQLException{
+    public static void deleteTabs() throws SQLException {
         Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         Statement statement = connection.createStatement();
         statement.executeUpdate("drop table if exists Managers;");
@@ -39,23 +39,23 @@ public class SQLfunc {
         statement.executeUpdate("drop table if exists Langs;");
     }
 
-    public static boolean containCheck(String tabName, String colName, String searchFor)throws  SQLException{
+    public static boolean containCheck(String tabName, String colName, String searchFor) throws SQLException {
         Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT "+colName+" FROM "+tabName+" where "+colName+" =" +
-                " '"+searchFor+"'");;
+        ResultSet resultSet = statement.executeQuery("SELECT " + colName + " FROM " + tabName + " where " + colName + " =" +
+                " '" + searchFor + "'");
+        ;
         return resultSet.next();
     }
 
-    public static int returnID(String tabName, String colName, String searchFor,String wantedResultColumn)throws  SQLException{
+    public static int returnID(String tabName, String colName, String searchFor, String wantedResultColumn) throws SQLException {
         Connection connection = DriverManager.getConnection(Auth.getHOST(), Auth.getLOGIN(), Auth.getPASSWD());
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT "+wantedResultColumn+" FROM "+tabName+" where "+colName+" =" +
-                " '"+searchFor+"'");
+        ResultSet resultSet = statement.executeQuery("SELECT " + wantedResultColumn + " FROM " + tabName + " where " + colName + " =" +
+                " '" + searchFor + "'");
         resultSet.next();
         return resultSet.getInt(wantedResultColumn);
     }
-
 
 
 }
