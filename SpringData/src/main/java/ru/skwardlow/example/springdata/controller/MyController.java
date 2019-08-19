@@ -20,6 +20,6 @@ public class MyController {
 
     @RequestMapping("/get_users")
     public String getUsers(Model model){
-        return "/get_users";
+        return "/ndex";
     }
 }
