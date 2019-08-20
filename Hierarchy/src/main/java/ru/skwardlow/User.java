@@ -17,7 +17,13 @@ public abstract class User implements CSV,JSON {
     @Getter @Setter
     protected String mailbox;
 
+    public int compareTo(User user2) {
+        return this.userid.compareTo(user2.userid);
+    }
 
+    public boolean equals(User user2) {
+        return this.fio.equals(user2.fio);
+    }
 
     @Override
     public String toString() {

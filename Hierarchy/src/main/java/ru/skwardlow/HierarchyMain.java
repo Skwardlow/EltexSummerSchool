@@ -97,5 +97,15 @@ public class HierarchyMain {
         SQLfunc.showAllUnion();
 
         System.out.println(splitter);
+
+        ArrayList<Developer> arrdev = new ArrayList<>();
+        ArrayList<Manager> arrman = new ArrayList<>();
+
+        System.out.println(" Task compareTo,eQuals");
+
+        System.out.println(man.compareTo(man1));
+        System.out.println(man.equals(man1));
+
+        System.out.println(splitter);
     }
 }
