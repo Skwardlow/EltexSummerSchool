@@ -17,7 +17,7 @@ public class Transactions {
 
 
         long time = System.currentTimeMillis();
-        for(Integer i=0; i<10;i++){
+        for(Integer i=0; i<1000;i++){
             statement.executeUpdate("INSERT INTO Compare VALUE ('"+simpleString+i.toString()+"');");
         }
         long time1 = System.currentTimeMillis();
@@ -27,7 +27,7 @@ public class Transactions {
 
         time = System.currentTimeMillis();
         connection.setAutoCommit(false);
-        for(Integer i=0; i<10;i++){
+        for(Integer i=0; i<1000;i++){
             statement.executeUpdate("INSERT INTO Compare VALUE ('"+simpleString+i.toString()+"');");
         }
         connection.commit();
